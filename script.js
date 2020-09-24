@@ -13,47 +13,50 @@ function writePassword() {
 }
 
 function generatePassword() {
-  
   var length = prompt("Please enter a length for your password between 8 - 128");
-  length = parseInt(length); 
-  
-if (length < 8 || length > 128) {
-  alert("Please enter a number between 8 and 128.");
-  return null;
-}
-  
-  var includeSpecial = confirm("include special characters?")
-  
-  var includeNumbers = confirm("include numbers?")
+  length = parseInt(length);
+  // length of the password must be between 8 - 128
+  if (length < 8 || length > 128) {
+    alert("Please enter a number between 8 and 128.");
+    return null;
+  }
 
-  var includeLower = confirm("include lower case characters?")
-  
-  var includeUpper = confirm("include upper case characters?")
- 
+  var includeSpecial = confirm("include special characters?");
+  var includeNumbers = confirm("include numbers?");
+  var includeLower = confirm("include lower case characters?");
+  var includeUpper = confirm("include upper case characters?");
+  // must select at least one 
   if (!(includeSpecial || includeNumbers || includeLower || includeUpper)) {
     alert("Please select at least one option");
     return null;
   }
 
+  var vocabulary = "";
+  if (includeSpecial) {
+    // vocabulary = vocabulary + special;
+    vocabulary += special;
+  }
+  if (includeNumbers) {
+    vocabulary += numeric;
+  }
+  if (includeLower) {
+    vocabulary += lower;
+  }
+  if (includeUpper) {
+    vocabulary += upper;
+  }
 
-  
+  var password = "";
+  for (var i = 0; i < length; i++) {
+    var randomIndex = getRandomInt(vocabulary.length);
+    password += vocabulary.charAt(randomIndex);
 
-
-  return "lol"
+  }
+  return password;
 }
-// Add event listener to generate button
 
-
-// promt how many characters
-
-// alert click ok to include special characters
-
-// click ok to confirm numeric characters
-
-// click ok to confirm using lower case characters
-
-// click ok to confirm using upper case characters
-
-// print password
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 generateBtn.addEventListener("click", writePassword);
