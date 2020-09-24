@@ -17,14 +17,26 @@ function generatePassword() {
   var length = prompt("Please enter a length for your password between 8 - 128");
   length = parseInt(length); 
   
+if (length < 8 || length > 128) {
+  alert("Please enter a number between 8 and 128.");
+  return null;
+}
   
   var includeSpecial = confirm("include special characters?")
   
   var includeNumbers = confirm("include numbers?")
 
-  var inclueLower = confirm("include lower case characters?")
+  var includeLower = confirm("include lower case characters?")
   
   var includeUpper = confirm("include upper case characters?")
+ 
+  if (!(includeSpecial || includeNumbers || includeLower || includeUpper)) {
+    alert("Please select at least one option");
+    return null;
+  }
+
+
+  
 
 
   return "lol"
