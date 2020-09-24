@@ -1,32 +1,33 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
+const special = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~\\\"";
+const numeric = "1234567890";
+const lower = "abcdefghijklmnopqrstuvwxyz";
+const upper = lower.toUpperCase();
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var passwordTextArea = document.querySelector("#password");
 
-  passwordText.value = password;
-  
-
+  passwordTextArea.value = password;
 }
 
-function generatePassword(){
+function generatePassword() {
   
-  var passwordLength = Range(8, 128)
-  var special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"]
-  var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-  var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+  var length = prompt("Please enter a length for your password between 8 - 128");
+  length = parseInt(length); 
+  
+  
+  var includeSpecial = confirm("include special characters?")
+  
+  var includeNumbers = confirm("include numbers?")
+
+  var inclueLower = confirm("include lower case characters?")
+  
+  var includeUpper = confirm("include upper case characters?")
 
 
-prompt("Please enter a length for your password between 8 - 128")
-alert("include special characters?")
-alert("include numbers?")
-alert("include lower case characters?")
-alert("include upper case characters?")
-
-
+  return "lol"
 }
 // Add event listener to generate button
 
